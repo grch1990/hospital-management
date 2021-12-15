@@ -6,7 +6,7 @@
   </div>
 
   <ul class="app-menu">
-{{--     <li>
+    <li>
     	<a class="app-menu__item" href="index.html">
     		<i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span>
     	</a>
@@ -35,7 +35,7 @@
     
 
     <li>
-    	<a class="app-menu__item" href="{{ route('formulario-index') }}">
+    	<a class="app-menu__item" href="">
     		<i class="app-menu__icon fa fa-table"></i><span class="app-menu__label">Medicamentos</span>
     	</a>
     </li>

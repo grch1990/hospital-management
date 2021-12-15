@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Hospital Cielo Azul</title>
 
 	<!-- Main CSS-->
@@ -31,10 +32,6 @@
 	    </li>
 	  </ul>
 	</header>
-	
-	
-
-	<!-- SIDEBAR -->
 
 	<aside class="app-sidebar">
   <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{{ asset('img/profile.png') }}" width="48px" height="48px" alt="User Image">
@@ -48,47 +45,41 @@
     	<a class="app-menu__item" href="index.html">
     		<i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span>
     	</a>
-    </li> --}}
+    </li> 
     <li class="treeview">
         <a class="app-menu__item" href="#" data-toggle="treeview">
             <i class="app-menu__icon fa fa-graduation-cap"></i>
-            <span class="app-menu__label">Registro</span>
+            <span class="app-menu__label">Modulo</span>
             <i class="treeview-indicator fa fa-angle-right"></i>
         </a>
       <ul class="treeview-menu">
         <li>
-            <a class="treeview-item" href="{{asset('medicos/create')}}">
-                <i class="icon fa fa-circle-o"></i> Registrar Medico
+            <a class="treeview-item" href="{{route('medico.index')}}">
+                <i class="icon fa fa-circle-o"></i> Lista de Medicos
+            </a>
+            <a class="treeview-item" href="{{route('medico.insertar')}}">
+                <i class="icon fa fa-circle-o"></i> Ejemplo
             </a>
         </li>
       </ul>
     </li>
-    
-    
+     
     <li>
-    	<a class="app-menu__item" href="">
-    		<i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Ambulatorio</span>
-    	</a>
-    </li>
-    
-
-    <li>
-    	<a class="app-menu__item" href="">
+    	<a class="app-menu__item" href="{{route('medicamentos.index')}}">
     		<i class="app-menu__icon fa fa-table"></i><span class="app-menu__label">Medicamentos</span>
     	</a>
     </li>
 
+     <li>
+    	<a class="app-menu__item" href="{{ route('paciente.create') }}">
+    		<i class="app-menu__icon fa fa-table"></i><span class="app-menu__label">Pacientes</span>
+    	</a>
+    </li>
 
   </ul>
 </aside>
 
-	<!-- FIN -->
-
-
-	@yield('main')
-
 	@yield('content')
-
 	
 	<!-- Essential javascripts for application to work-->
 	<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script> -->

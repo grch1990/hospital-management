@@ -1,29 +1,36 @@
 <?php
-use App\Http\Controllers\HospitalController;
+use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\MedicoController;
+use App\Http\Controllers\MedicamentoController;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+//Rutas de Medicamentos
+Route::get('medicamentos',[MedicamentoController::class,'index'])->name('medicamentos.index');
+Route::get('medicamentos/mostrar',[MedicamentoController::class,'mostrar'])->name('medicamentos.mostrar');
+Route::post('medicamentos/store',[MedicamentoController::class,'store']);
+Route::get('medicamentos/{id}/edit',[MedicamentoController::class,'edit']);
+Route::put('medicamentos/{id}/update',[MedicamentoController::class,'update']);
+Route::delete('medicamentos/{id}/eliminar',[MedicamentoController::class,'eliminar']);
 
-Route::get('/index',[HospitalController::class,'index']);
-Route::get('medicos/create',[HospitalController::class,'create']);
-Route::post('medicos/store',[HospitalController::class,'store'])->name('medicos.store');
-Route::get('/medicos/show',[HospitalController::class,'show'])->name('medicos.listas');
-Route::get('list',[HospitalController::class,'list'])->name('list');
-Route::get('medicos/{id}/edit',[HospitalController::class,'edit']);
+//Rutas de Medicos
+Route::get('medico',[MedicoController::class,'index'])->name('medico.index');
+Route::get('medico/listado',[MedicoController::class,'med_list']);
+Route::post('medico/store',[MedicoController::class,'store']);
+Route::get('medico/{id}/show',[MedicoController::class,'show']);
+Route::put('medico/{id}/actualizar',[MedicoController::class,'actualizar']);
+Route::delete('medico/{id}/destruir',[MedicoController::class,'destruir']);
+//ejemplo de la ruta medico
+Route::get('medico/insertar',[MedicoController::class,'insertar'])->name('medico.insertar');
+Route::post('medico/validacion',[MedicoController::class,'validacion']);
 
 
+
+
+//Ruta de Pacientes
+Route::get('paciente',[PacienteController::class,'create'])->name('paciente.create');
+Route::get('paciente/{cedula}/consulta',[PacienteController::class,'consulta']);
 
